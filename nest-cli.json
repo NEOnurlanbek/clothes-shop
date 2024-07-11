@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/clothes-api/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/clothes-api/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/clothes-api",
+  "projects": {
+    "clothes-api": {
+      "type": "application",
+      "root": "apps/clothes-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/clothes-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/clothes-api/tsconfig.app.json"
+      }
+    },
+    "clothes-batch": {
+      "type": "application",
+      "root": "apps/clothes-batch",
+      "entryFile": "main",
+      "sourceRoot": "apps/clothes-batch/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/clothes-batch/tsconfig.app.json"
+      }
+    }
   }
 }

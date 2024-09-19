@@ -33,7 +33,7 @@ export class MemberResolver {
 	}
 
 
-
+    
 	@UseGuards(AuthGuard)
 	@Query(() => String)
 	public async checkAuth(@AuthMember('memberNick') memberNick: string): Promise<string> {
@@ -42,8 +42,8 @@ export class MemberResolver {
 		return `Hi ${memberNick} vs `;
 	}
 
-
-	@UseGuards(AuthGuard)
+    @Roles(MemberType.USER, MemberType.AGENT)
+	@UseGuards(RolesGuard)
 	@Query(() => String)
 	public async checkAuthRoles(@AuthMember() authMember: Member): Promise<string> {
 		console.log('query: checkAuthRoles');

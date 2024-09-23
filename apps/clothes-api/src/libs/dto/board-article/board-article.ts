@@ -42,8 +42,6 @@ export class BoardArticle {
 	@Field(() => Date)
 	updatedAt: Date;
 
-	/** from aggregation **/
-
 	 /** FROM AGGREGATION **/
      @Field(() => [MeLiked], { nullable: true })
      meLiked?: MeLiked[];

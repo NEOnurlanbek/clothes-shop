@@ -32,7 +32,6 @@ export class LikeService {
                 throw new BadRequestException(Message.CREATE_FAILED);
             }
         }
-        console.log(`-Like modifier ${modifier} -` )
         return modifier;
     }
 

@@ -55,8 +55,7 @@ export class FollowService {
 			.findOneAndDelete({
 				followingId: followingId,
 				followerId: followerId,
-			})
-			.exec();
+			}).exec();
 		if (!result) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
 
 		await this.memberService.memberStatsEditor({ _id: followerId, targetKey: 'memberFollowings', modifier: -1 });
@@ -93,8 +92,7 @@ export class FollowService {
 						metaCounter: [{ $count: 'total' }],
 					},
 				},
-			])
-			.exec();
+			]).exec();
 		if (!result.length) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
 		return result[0];
 	}

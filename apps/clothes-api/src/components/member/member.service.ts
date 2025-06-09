@@ -66,7 +66,7 @@ export class MemberService {
 	public async updateMember(memberId: ObjectId, input: MemberUpdate): Promise<Member> {
         
         const result: Member = await this.memberModel.findByIdAndUpdate({_id: memberId, MemberStatus: MemberStatus.ACTIVE,}, input, { new: true }).exec();
-        console.log("result----------------------------------------========================", result);
+        console.log("result", result);
         if(!result) throw new InternalServerErrorException(Message.UPDATE_FAILED);
 
         result.accessToken = await this.authService.createToken(result);

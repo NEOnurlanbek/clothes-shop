@@ -119,7 +119,6 @@ export class BoardArticleService {
 			])
 			.exec();
 		if (!result.length) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
-		console.log('RESULT', result[0]);
 		return result[0];
 	}
 
@@ -184,6 +183,7 @@ export class BoardArticleService {
 	}
 
 	public async updateBoardArticleByAdmin(input: BoardArticleUpdate): Promise<BoardArticle> {
+		console.log("article input", input)
 		const { _id, articleStatus } = input;
 
 		const result = await this.boardArticleModel
